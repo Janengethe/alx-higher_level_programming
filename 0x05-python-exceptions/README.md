@@ -22,3 +22,6 @@
 8. executes a function safely
 9. write Python function that corresponds to a certain bytecode
 10. C functions that print some basic info about Python lists, Python bytes an Python float objects
+
+#### Author
+[Jane Ng'ethe](https://github.com/Janengethe/alx-higher_level_programming)
