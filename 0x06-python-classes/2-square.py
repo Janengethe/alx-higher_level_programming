@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Module 2-square"""
+"""
+Module 2-square
+Defines a square by private attribute size and validates size
+"""
 
 
 class Square:

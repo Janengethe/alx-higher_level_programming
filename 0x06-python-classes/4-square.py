@@ -1,9 +1,20 @@
 #!/usr/bin/python3
-"""Module 3-square"""
+"""
+Module 4-square
+Defines a square by private attribute size,
+
+"""
 
 
 class Square:
-    """created class"""
+    """
+    Creates class
+    Functions:
+        __init__(self, size=0)
+        size(self)
+        size(self, value)
+        area(self)
+    """
     def __init__(self, size=0):
         """private instance attribute - size"""
         if type(size)is not int:
@@ -30,4 +41,8 @@ class Square:
             self.__size = value
 
     def area(self):
+        """
+        Calculates the area of a square
+        Returns the area
+        """
         return (self.__size)**2

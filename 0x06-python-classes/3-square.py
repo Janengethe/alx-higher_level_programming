@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Module 3-square"""
+"""
+Module 3-square
+Defines a square with private attribute size and public
+attribute area
+"""
 
 
 class Square:
@@ -14,4 +18,8 @@ class Square:
             self.__size = size
 
     def area(self):
+        """
+        Calculates area of a square
+        Returns the area
+        """
         return (self.__size)**2
