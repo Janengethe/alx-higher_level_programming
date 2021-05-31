@@ -22,11 +22,11 @@ Test list with no elements:
      >>> empty.print_sorted()
      []
 Test list with only one element:
-     >>> one_element = MyList()
-     >>> one_element.append(-589)
-     >>> print(one_element)
-     [-589]
-     >>> one_element.print_sorted()
-     [-589]
-     >>> print(one_element)
-     [-589]
+     >>> solo = MyList()
+     >>> solo.append(-99999)
+     >>> print(solo)
+     [-99999]
+     >>> solo.print_sorted()
+     [-99999]
+     >>> print(solo)
+     [-99999]
