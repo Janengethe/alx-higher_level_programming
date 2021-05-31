@@ -21,12 +21,4 @@ Test list with no elements:
      []
      >>> empty.print_sorted()
      []
-Test list with only one element:
-     >>> solo = MyList()
-     >>> solo.append(-99999)
-     >>> print(solo)
-     [-99999]
-     >>> solo.print_sorted()
-     [-99999]
-     >>> print(solo)
-     [-99999]
+FAIL CASES:
