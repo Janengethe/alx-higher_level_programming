@@ -21,3 +21,19 @@ Test list with no elements:
      []
      >>> empty.print_sorted()
      []
+     
+Test type, isinstance, issubclass:
+     >>> type(MyList())
+     <class '1-my_list.MyList'>
+
+     >>> isinstance(MyList, object)
+     True
+
+     >>> isinstance(MyList, list)
+     False
+
+     >>> issubclass(MyList, list)
+     True
+
+     >>> 'print_sorted' in dir(MyList)
+     True
