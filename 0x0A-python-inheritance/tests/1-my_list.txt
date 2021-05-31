@@ -14,11 +14,9 @@ int:
 >>> print(my_list)
 [2, 6, 4]
 
-
 Test list with no elements:
      >>> empty = MyList()
      >>> print(empty)
      []
      >>> empty.print_sorted()
      []
-FAIL CASES:
