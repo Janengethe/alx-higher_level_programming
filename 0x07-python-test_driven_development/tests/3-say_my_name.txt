@@ -9,6 +9,9 @@ My name is John Smith
 >>> say_my_name("Walter", "White")
 My name is Walter White
 
+>>> say_my_name("Jane")
+My name is Jane
+
 FAIL CASES:
 
 >>> say_my_name(12, "Smith")
@@ -17,6 +20,16 @@ Traceback (most recent call last):
 TypeError: first_name must be a string
 
 >>> say_my_name("John", 12)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name(None, None)
+Traceback (mpst recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my name("Jane", None)
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
