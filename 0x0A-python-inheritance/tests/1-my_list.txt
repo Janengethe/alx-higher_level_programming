@@ -14,9 +14,20 @@ int:
 >>> print(my_list)
 [2, 6, 4]
 
+>>> my_list = MyList()
+>>> my_list.append(-9)
+>>> my_list.append(2)
+>>> my_list.append(-5)
+>>> print(my_list)
+[-9, 2, -5]
+>>> my_list.print_sorted()
+[-9, -5, 2]
+>>> print(my_list)
+[-9, 2, -5]
+
 Test list with no elements:
-     >>> empty = MyList()
-     >>> print(empty)
-     []
-     >>> empty.print_sorted()
-     []
+>>> empty = MyList()
+>>> print(empty)
+[]
+>>> empty.print_sorted()
+[]
