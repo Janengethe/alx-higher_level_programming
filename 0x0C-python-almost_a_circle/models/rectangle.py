@@ -14,6 +14,7 @@ class Rectangle(Base):
     class that inherits from Base
     Methods:
         def __init__(self, width, height, x,y,id)
+        def area(self)
     Getter
         def width(self)
         def height(self)
@@ -88,3 +89,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Return the area of the rectangle"""
+        return self.__width * self.__height
