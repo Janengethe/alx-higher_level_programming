@@ -15,6 +15,8 @@ class Rectangle(Base):
     Methods:
         def __init__(self, width, height, x,y,id)
         def area(self)
+        def display(self)
+        def __str__(self)
     Getter
         def width(self)
         def height(self)
@@ -93,3 +95,14 @@ class Rectangle(Base):
     def area(self):
         """Return the area of the rectangle"""
         return self.__width * self.__height
+
+    def display(self):
+        """Displays the rectangle with "#" character"""
+        print("\n".join("#" * self.__width for i in range(self.__height)))
+
+    def __str__(self):
+        """Overrides to return
+        "[Rectangle] (<id>) <x>/<y> - <width>/<height>"
+        """
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format
+                (self.id, self.__x, self.__y, self.__width, self.__height))
