@@ -17,7 +17,7 @@ class Rectangle(Base):
         def area(self)
         def display(self)
         def __str__(self)
-        def update(self, *args)
+        def update(self, *args, **kwargs)
     Getter
         def width(self)
         def height(self)
