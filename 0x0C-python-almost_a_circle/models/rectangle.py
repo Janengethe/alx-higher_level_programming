@@ -17,7 +17,7 @@ class Rectangle(Base):
         def area(self)
         def display(self)
         def __str__(self)
-        def update(self, *args)
+        def update(self, *args, **kwargs)
     Getter
         def width(self)
         def height(self)
@@ -110,17 +110,31 @@ class Rectangle(Base):
         return ("[Rectangle] ({}) {}/{} - {}/{}".format
                 (self.id, self.__x, self.__y, self.__width, self.__height))
 
-    def update(self, *args):
-        """Assigns argument to attributes"""
+    def update(self, *args, **kwargs):
+        """Assigns key/value argument to attributes"""
         if args:
+            """For args the order matters"""
             for i, j in enumerate(args):
                 if i == 0:
                     self.id = j
                 elif i == 1:
-                    self.__width = j
+                    self.width = j
                 elif i == 2:
-                    self.__height = j
+                    self.height = j
                 elif i == 3:
-                    self.__x = j
+                    self.x = j
                 else:
-                    self.__y = j
+                    self.y = j
+
+        else:
+            """kwargs order doesn't matter"""
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
