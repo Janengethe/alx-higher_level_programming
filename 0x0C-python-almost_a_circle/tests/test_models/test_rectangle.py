@@ -45,3 +45,26 @@ class TestRectangle(unittest.TestCase):
     def test_class(self):
         """Tests class is indeed Rectangle"""
         self.assertTrue(Rectangle(5, 6), self.__class__ == Rectangle)
+
+    def test_att_values(self):
+        """Tests the values given for the
+        attributes and error raised where necessary"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("2", 3, 4, 5, 6)
+            Rectangle([2, 3], 4, 5, 6, 7)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(2, (3, 5), 4, 5, 7)
+            Rectangle(2, {6: 7}, 5, 6, 7)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(1, 2, None, 3, 4)
+            Rectangle(1, 2, (ten), 3, 4)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Rectangle(1, 2, 3, "one", 4)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(0, 2, 3, 4, 6)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(2, -4, 5, 6, 7)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Rectangle(2, 3, -2, 4, 6)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Rectangle(20, 30, 25, -45, 60)
