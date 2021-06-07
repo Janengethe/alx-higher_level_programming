@@ -81,8 +81,5 @@ class TestRectangle(unittest.TestCase):
 
     def test_str(self):
         """Tests how it prints out the rectangle"""
-        rec = Rectangle(2, 3, 4, 5, 6)
-        self.assertEqual(rec, '[Rectangle] (6) 4/5 - 2/3')
-        re = Rectangle(5, 6)
-        self.assertEqual(re, '[Rectangle] (1) 0/0 - 5/6')
-        
+        rec = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(str(rec), '[Rectangle] (5) 3/4 - 1/2')
