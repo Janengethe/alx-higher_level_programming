@@ -4,9 +4,11 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
     def setUp(self):
         pass
+
     def tearDown(self):
         try:
             os.remove("Rectangle.json")
