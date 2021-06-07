@@ -9,6 +9,9 @@ class TestRectangle(unittest.TestCase):
         rec =  Rectangle(5, 6)
         self.assertTrue(rec.width == 5)
         self.assertTrue(rec.height == 6)
+        self.assertTrue(rec.x == 0)
+        self.assertTrue(rec.y == 0)
+        self.assertTrue(rec.id is not None)
         
     def test_args(self):
         """Tests the args given to rep"""
@@ -68,3 +71,18 @@ class TestRectangle(unittest.TestCase):
             Rectangle(2, 3, -2, 4, 6)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             Rectangle(20, 30, 25, -45, 60)
+
+    def test_rec_area(self):
+        """Tests the area of the rectangle"""
+        self.assertEqual(Rectangle(4, 5).area(), 20)
+        self.assertEqual(Rectangle(2, 3, 0, 0, 7).area(), 6)
+        self.assertEqual(Rectangle(8, 20, 3, 4, 76).area(), 160)
+        self.assertEqual(Rectangle(4, 7, 2, 1).area(), 28)
+
+    def test_str(self):
+        """Tests how it prints out the rectangle"""
+        rec = Rectangle(2, 3, 4, 5, 6)
+        self.assertEqual(rec, '[Rectangle] (6) 4/5 - 2/3')
+        re = Rectangle(5, 6)
+        self.assertEqual(re, '[Rectangle] (1) 0/0 - 5/6')
+        
