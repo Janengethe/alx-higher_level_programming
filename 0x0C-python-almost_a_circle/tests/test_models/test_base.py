@@ -1,14 +1,34 @@
 #!/usr/bin/python3
+"""
+Module test_base
+Tests base.py
+Executed by "python3 -m unittest discover tests"
+Tested by "python3 -m unittest tests/test_models/test_base.py"
+Total tests = 19
+"""
+
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 import json
 import os
+import pep8
+
+
+class TestPep8(unittest.TestCase):
+    """Tests for Pep8 guidelines"""
+
+    def test_pep8(self):
+        """Tests pep8"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        files = ["models/base.py", "tests/test_models/test_base.py"]
+        results = pep8style.check_files(files)
+        self.assertEqual(results.total_errors, 0, "Fix pep8")
 
 
 class TestBase(unittest.TestCase):
-    """Total tests = 14"""
+    """Tests for models/base.py"""
     def setUp(self):
         pass
 
@@ -125,3 +145,41 @@ class TestBase(unittest.TestCase):
         jsonlist3 = Base.from_json_string(list3)
         self.assertTrue(type(jsonlist3) == list)
         self.assertTrue(jsonlist3 == [])
+
+    def test_create(self):
+        """Tests whether create returns an
+        instance with all attributes already set
+        """
+        rec1 = Rectangle(2, 3, 4, 5, 9)
+        dic = rec1.to_dictionary()
+        rec2 = Rectangle.create(**dic)
+        self.assertEqual(str(rec1), '[Rectangle] (9) 4/5 - 2/3')
+        self.assertEqual(str(rec2), '[Rectangle] (9) 4/5 - 2/3')
+        self.assertIsNot(rec1, rec2)
+
+    def test_load_from_file(self):
+        """Tests whether it returns a list of instances"""
+        rec1 = Rectangle(5, 7, 2, 4, 9)
+        rec2 = Rectangle(2, 4, 2, 2, 98)
+        Rectangle.save_to_file([rec1, rec2])
+        recs = Rectangle.load_from_file()
+        self.assertEqual(len(recs), 2)
+        for k, v in enumerate(recs):
+            if k == 0:
+                self.assertEqual(str(v), '[Rectangle] (9) 2/4 - 5/7')
+            if k == 1:
+                self.assertEqual(str(v), '[Rectangle] (98) 2/2 - 2/4')
+
+    def test_none_load_from_file(self):
+        """Test when fileis none"""
+        Rectangle.save_to_file(None)
+        recs = Rectangle.load_from_file()
+        self.assertEqual(type(recs), list)
+        self.assertEqual(len(recs), 0)
+
+    def test_empty_load_from_file(self):
+        """Tests load from empty file"""
+        Rectangle.save_to_file([])
+        recs = Rectangle.load_from_file()
+        self.assertEqual(type(recs), list)
+        self.assertEqual(len(recs), 0)
