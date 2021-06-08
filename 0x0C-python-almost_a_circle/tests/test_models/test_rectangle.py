@@ -1,18 +1,28 @@
 #!/usr/bin/python3
+"""
+Module test_rectangle
+Tests the functinality of the file models/rectangle.py
+Inherits from class Base
+Total tests =
+"""
+
+
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 
+
 class TestRectangle(unittest.TestCase):
+    """Tests models/rectangle.py"""
     def test_default_attr(self):
         """Tests the attributes by default"""
-        rec =  Rectangle(5, 6)
+        rec = Rectangle(5, 6)
         self.assertTrue(rec.width == 5)
         self.assertTrue(rec.height == 6)
         self.assertTrue(rec.x == 0)
         self.assertTrue(rec.y == 0)
         self.assertTrue(rec.id is not None)
-        
+
     def test_args(self):
         """Tests the args given to rep"""
         rec = Rectangle(2, 3, 4, 5, 6)
@@ -44,7 +54,7 @@ class TestRectangle(unittest.TestCase):
             Rectangle.__height
             Rectangle.__x
             Rectangle.__y
-            
+
     def test_class(self):
         """Tests class is indeed Rectangle"""
         self.assertTrue(Rectangle(5, 6), self.__class__ == Rectangle)
