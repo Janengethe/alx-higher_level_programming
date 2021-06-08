@@ -45,6 +45,7 @@ class Base:
                 objs.append(cls.to_dictionary(ob))
             with open(filename, "w") as f:
                 f.write(cls.to_json_string(objs))
+        return objs
 
     @staticmethod
     def from_json_string(json_string):
