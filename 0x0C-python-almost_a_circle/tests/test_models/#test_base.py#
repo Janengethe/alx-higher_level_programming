@@ -203,3 +203,11 @@ class TestBase(unittest.TestCase):
         slistoutput = Square.load_from_file_csv()
         self.assertTrue(slistinput[0].__str__() == slistoutput[0].__str__())
         self.assertTrue(slistinput[1].__str__() == slistoutput[1].__str__())
+
+    def test_none_load_from_file_csv(self):
+        """Tests when file is None"""
+        Rectangle.save_to_file_csv(None)
+        self.assertEqEqual
+
+
+        
