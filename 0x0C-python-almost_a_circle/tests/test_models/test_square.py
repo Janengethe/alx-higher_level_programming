@@ -15,12 +15,12 @@ class TestSquare(unittest.TestCase):
         
     def test_args(self):
         """Tests the args given to rep"""
-        sq = Square(2, 4, 5)
+        sq = Square(2, 4, 5, 6)
         self.assertTrue(sq.width == 2)
         self.assertTrue(sq.height == 2)
         self.assertTrue(sq.x == 4)
         self.assertTrue(sq.y == 5)
-        self.assertTrue(sq.id == 1)
+        self.assertTrue(sq.id == 6)
 
     def test_more_args(self):
         """Tests if more arguments passed"""
