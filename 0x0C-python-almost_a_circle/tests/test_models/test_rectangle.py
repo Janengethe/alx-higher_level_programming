@@ -3,13 +3,26 @@
 Module test_rectangle
 Tests the functinality of the file models/rectangle.py
 Inherits from class Base
-Total tests =
+Total tests = 11
 """
 
 
+import pep8
+import os
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+
+
+class TestPep8(unittest.TestCase):
+    """Tests pep8 guidelines for models/rectangle.py"""
+    def test_pep8(self):
+        """Tests pep8"""
+        style = pep8.StyleGuide(quiet=False)
+        results = 0
+        files = ["models/rectangle.py", "tests/test_models/test_rectangle.py"]
+        results += style.check_files(files).total_errors
+        self.assertEqual(results, 0, 'Fix pep8')
 
 
 class TestRectangle(unittest.TestCase):
