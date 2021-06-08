@@ -3,7 +3,7 @@
 Module test_rectangle
 Tests the functinality of the file models/rectangle.py
 Inherits from class Base
-Total tests = 11
+Total tests = 15
 """
 
 
@@ -106,3 +106,44 @@ class TestRectangle(unittest.TestCase):
         """Tests how it prints out the rectangle"""
         rec = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(str(rec), '[Rectangle] (5) 3/4 - 1/2')
+
+    def test_args_update(self):
+        """Test method: update(*args)"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(10, 10, 10, 10, 10)
+        self.assertEqual(str(r), '[Rectangle] (10) 10/10 - 10/10')
+        r.update()
+        self.assertEqual(str(r), '[Rectangle] (10) 10/10 - 10/10')
+        r.update(99)
+        self.assertEqual(str(r), '[Rectangle] (99) 10/10 - 10/10')
+        r.update(99, 1)
+        self.assertEqual(str(r), '[Rectangle] (99) 10/10 - 1/10')
+        r.update(99, 1, 2)
+        self.assertEqual(str(r), '[Rectangle] (99) 10/10 - 1/2')
+        r.update(99, 1, 2, 3, 4)
+        self.assertEqual(str(r), '[Rectangle] (99) 3/4 - 1/2')
+
+    def test_invalid_args_update(self):
+        """Test invalid *args"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(99, 1, 2, 3, 4)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r.update(99, 1, 2, 3, "string")
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r.update(99, 1, 2, 3, -99)
+
+    def test_kwargs_update(self):
+        """Test method: update(*kwargs)"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=55)
+        self.assertEqual(str(r), '[Rectangle] (55) 3/4 - 1/2')
+        r.update(id=44, x=770, y=880, width=990)
+        self.assertEqual(str(r), '[Rectangle] (44) 770/880 - 990/2')
+
+    def test_invalid_kwargs_update(self):
+        """Test mixture of valid and invalid *kwargs"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=44, x=770, y=880, width=990)
+        self.assertEqual(str(r), '[Rectangle] (44) 770/880 - 990/2')
+        r.update(nokey=1000, invalid=2000, testing=3000, id=4000)
+        self.assertEqual(str(r), '[Rectangle] (4000) 770/880 - 990/2')
