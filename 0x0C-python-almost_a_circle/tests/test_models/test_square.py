@@ -36,19 +36,21 @@ class TestSquare(unittest.TestCase):
     def test_square(self):
         """Tests when args are not int"""
         with self.assertRaises(TypeError):
-            Square(1, "2")
-            Square("j", 3)
+            Square("j")
+            Square([5, 4])
+            Square({'yes': 1})
         with self.assertRaises(TypeError):
-            Square(1, 2, "3")
-            Square(2, 5, 6, "s", 8)
+            Square(1, "3", 7, 8)
+            Square(2, 5, "s", 8)
 
     def test_negative_square(self):
         """Tests when args are negative"""
         with self.assertRaises(ValueError):
             Square(-1)
-            Square(1, -2)
-            Square(1, 2, -3)
             Square(0)
+        with self.assertRaises(ValueError):
+            Square(1, -9, 6, 7)
+            Square(1, 3, -8, 6)
 
     def test_class(self):
         """Tests class is indeed Square"""
