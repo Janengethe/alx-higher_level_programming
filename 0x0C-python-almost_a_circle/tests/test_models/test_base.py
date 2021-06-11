@@ -113,23 +113,36 @@ class TestBase(unittest.TestCase):
         """Tests writing json string rep to file"""
         r1 = Rectangle(10, 7, 2, 8, 9)
         r2 = Rectangle(2, 4, 6, 8, 10)
+        sq1 = Square(2, 3, 4, 5)
+        sq2 = Square(6, 7, 8, 9)
         Rectangle.save_to_file([r1, r2])
+        Square.save_to_file([sq1, sq2])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(
                 json.dumps([r1.to_dictionary(), r2.to_dictionary()]),
                 file.read())
+        with open("Square.json", "r") as f:
+            self.assertEqual(
+                json.dumps([sq1.to_dictionary(), sq2.to_dictionary()]),
+                f.read())
 
     def test_empty_save_to_file(self):
         """Tests when the list is empty"""
         Rectangle.save_to_file([])
+        Square.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual('[]', file.read())
+        with open("Square.json", "r") as f:
+            self.assertEqual('[]', f.read())
 
     def test_none_save_to_file(self):
         """Tests when list is none"""
         Rectangle.save_to_file(None)
+        Square.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             self.assertEqual('[]', file.read())
+        with open("Square.json", "r") as f:
+            self.assertEqual('[]', f.read())
 
     def test_from_json_string(self):
         """Tests list of json string representation"""
