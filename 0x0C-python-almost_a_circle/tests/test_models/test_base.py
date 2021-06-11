@@ -43,9 +43,13 @@ class TestBase(unittest.TestCase):
         b1 = Base()
         b2 = Base()
         b3 = Base()
+        b4 = Base(12)
+        b5 = Base()
         self.assertTrue(b1, self.id == 1)
         self.assertTrue(b2, self.id == 2)
         self.assertTrue(b3, self.id == 3)
+        self.assertTrue(b4, self.id == 12)
+        self.assertTrue(b5, self.id == 4)
 
     def test_id_given(self):
         """Tests the matching of id given"""
