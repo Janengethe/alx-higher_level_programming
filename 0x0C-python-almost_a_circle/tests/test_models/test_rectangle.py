@@ -3,7 +3,7 @@
 Module test_rectangle
 Tests the functinality of the file models/rectangle.py
 Inherits from class Base
-Total tests = 15
+Total tests = 16
 """
 
 
@@ -59,6 +59,11 @@ class TestRectangle(unittest.TestCase):
         """Tests when no args passed"""
         with self.assertRaises(TypeError):
             Rectangle()
+
+    def test_zero_height(self):
+        """Tests whn the height is zero"""
+        with self.assertRaises(ValueError):
+            Rectangle(1, 0)
 
     def test_private_att_access(self):
         """Tests access of private attributes"""
