@@ -3,7 +3,7 @@
 Module test_rectangle
 Tests the functinality of the file models/rectangle.py
 Inherits from class Base
-Total tests = 17
+Total tests = 18
 """
 
 
@@ -120,6 +120,13 @@ class TestRectangle(unittest.TestCase):
             Rectangle(5, 3, 1, 2).display()
             b = bufr.getvalue()
         self.assertEqual(b, '\n\n #####\n #####\n #####\n')
+
+    def test_display_without_cordinates(self):
+        """Tests without y coordinate"""
+        with StringIO() as buff, redirect_stdout(buff):
+            Rectangle(5, 3, 1).display()
+            b = buff.getvalue()
+            self.assertEqual(b, ' #####\n #####\n #####\n')
 
     def test_str(self):
         """Tests how it prints out the rectangle"""
