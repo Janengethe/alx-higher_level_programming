@@ -3,13 +3,16 @@
 Module test_rectangle
 Tests the functinality of the file models/rectangle.py
 Inherits from class Base
-Total tests = 16
+Total tests = 17
 """
 
 
+import sys
 import pep8
 import os
 import unittest
+from io import StringIO
+from contextlib import redirect_stdout
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -106,6 +109,17 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(Rectangle(2, 3, 0, 0, 7).area(), 6)
         self.assertEqual(Rectangle(8, 20, 3, 4, 76).area(), 160)
         self.assertEqual(Rectangle(4, 7, 2, 1).area(), 28)
+
+    def test_display(self):
+        """Tests display"""
+        with StringIO() as bufr, redirect_stdout(bufr):
+            Rectangle(5, 3).display()
+            b = bufr.getvalue()
+        self.assertEqual(b, '#####\n#####\n#####\n')
+        with StringIO() as bufr, redirect_stdout(bufr):
+            Rectangle(5, 3, 1, 2).display()
+            b = bufr.getvalue()
+        self.assertEqual(b, '\n\n #####\n #####\n #####\n')
 
     def test_str(self):
         """Tests how it prints out the rectangle"""
