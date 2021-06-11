@@ -4,7 +4,7 @@ Module test_base
 Tests base.py
 Executed by "python3 -m unittest discover tests"
 Tested by "python3 -m unittest tests/test_models/test_base.py"
-Total tests = 21
+Total tests = 22
 """
 
 import unittest
@@ -37,6 +37,15 @@ class TestBase(unittest.TestCase):
             os.remove("Rectangle.json")
         except:
             pass
+
+    def test_id_automatically(self):
+        """Tests the assignment of id automatically"""
+        b1 = Base()
+        b2 = Base()
+        b3 = Base()
+        self.assertTrue(b1, self.id == 1)
+        self.assertTrue(b2, self.id == 2)
+        self.assertTrue(b3, self.id == 3)
 
     def test_id_given(self):
         """Tests the matching of id given"""
