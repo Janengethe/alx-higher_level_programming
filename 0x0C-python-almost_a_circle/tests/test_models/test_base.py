@@ -4,7 +4,7 @@ Module test_base
 Tests base.py
 Executed by "python3 -m unittest discover tests"
 Tested by "python3 -m unittest tests/test_models/test_base.py"
-Total tests = 25
+Total tests = 27
 """
 
 import unittest
@@ -51,6 +51,18 @@ class TestBase(unittest.TestCase):
         self.assertTrue(b4, self.id == 12)
         self.assertTrue(b5, self.id == 4)
 
+    def test_1_id(self):
+        """After run set of ids"""
+        Base._Base__nb_objects = 0
+        bas = Base()
+        self.assertEqual(bas.id, 1)
+        t1 = Base(22)
+        self.assertEqual(t1.id, 22)
+        t2 = Base(-33)
+        self.assertEqual(t2.id, -33)
+        t3 = Base()
+        self.assertEqual(t3.id, 2)
+
     def test_id_given(self):
         """Tests the matching of id given"""
         self.assertTrue(Base(100), self.id == 100)
@@ -70,6 +82,14 @@ class TestBase(unittest.TestCase):
         """Tests more than one args given"""
         with self.assertRaises(TypeError):
             Base(10, 13)
+
+    def test_attribute_error(self):
+        """Tests when accessing prvate class attr"""
+        b = Base(33)
+        with self.assertRaises(AttributeError):
+            print(b.nb_objects)
+        with self.assertRaises(AttributeError):
+            print(b.__nb_objects)
 
     def test_private_att_access(self):
         """Tests access of private attribute"""
