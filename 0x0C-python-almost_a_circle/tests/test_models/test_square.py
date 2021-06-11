@@ -82,3 +82,9 @@ class TestSquare(unittest.TestCase):
         sq = Square(1, 2, 3, 44)
         sq.size = 50
         self.assertEqual(str(sq), '[Square] (44) 2/3 - 50')
+
+    def test_to_dictionary(self):
+        """Tests the dict representation of square"""
+        sq = Square(10, 2, 1, 9)
+        sq_dict = sq.to_dictionary()
+        self.assertEqual(type(sq_dict), dict)
