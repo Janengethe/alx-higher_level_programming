@@ -40,7 +40,8 @@ class TestSquare(unittest.TestCase):
             Square([5, 4])
             Square({'yes': 1})
         with self.assertRaises(TypeError):
-            Square(1, "3", 7, 8)
+            Square(1, "2")
+            Square(1, 2, "3")
             Square(2, 5, "s", 8)
 
     def test_negative_square(self):
@@ -50,6 +51,8 @@ class TestSquare(unittest.TestCase):
             Square(0)
         with self.assertRaises(ValueError):
             Square(1, -9, 6, 7)
+            Square(1, -2)
+            Square(1, 2, -3)
             Square(1, 3, -8, 6)
 
     def test_class(self):
@@ -102,4 +105,7 @@ class TestSquare(unittest.TestCase):
         """Tests the dict representation of square"""
         sq = Square(10, 2, 1, 9)
         sq_dict = sq.to_dictionary()
+        sq1 = Square(5)
+        sq1.update(**sq_dict)
         self.assertEqual(type(sq_dict), dict)
+        self.assertFalse(sq == sq1)
