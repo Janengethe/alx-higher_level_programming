@@ -4,7 +4,7 @@ Module test_base
 Tests base.py
 Executed by "python3 -m unittest discover tests"
 Tested by "python3 -m unittest tests/test_models/test_base.py"
-Total tests = 23
+Total tests = 25
 """
 
 import unittest
@@ -206,12 +206,32 @@ class TestBase(unittest.TestCase):
             if k == 1:
                 self.assertEqual(str(v), '[Rectangle] (98) 2/2 - 2/4')
 
+    def test_square_save_to_file(self):
+        """Tests for square"""
+        sq1 = Square(2, 3, 4, 5)
+        sq2 = Square(6, 7, 8, 9)
+        Square.save_to_file([sq1, sq2])
+        sqs = Square.load_from_file()
+        self.assertEqual(len(sqs), 2)
+        for i, j in enumerate(sqs):
+            if i == 0:
+                self.assertEqual(str(j), '[Square] (5) 3/4 - 2')
+            if i == 1:
+                self.assertEqual(str(j), '[Square] (9) 7/8 - 6')
+
     def test_none_load_from_file(self):
         """Test when fileis none"""
         Rectangle.save_to_file(None)
         recs = Rectangle.load_from_file()
         self.assertEqual(type(recs), list)
         self.assertEqual(len(recs), 0)
+
+    def test_square_load_from_file(self):
+        """Tests for square"""
+        Square.save_to_file(None)
+        sqs = Square.load_from_file()
+        self.assertEqual(type(sqs), list)
+        self.assertEqual(len(sqs), 0)
 
     def test_empty_load_from_file(self):
         """Tests load from empty file"""
