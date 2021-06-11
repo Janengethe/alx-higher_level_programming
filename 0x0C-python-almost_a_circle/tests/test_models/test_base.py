@@ -4,7 +4,7 @@ Module test_base
 Tests base.py
 Executed by "python3 -m unittest discover tests"
 Tested by "python3 -m unittest tests/test_models/test_base.py"
-Total tests = 22
+Total tests = 23
 """
 
 import unittest
@@ -143,6 +143,16 @@ class TestBase(unittest.TestCase):
             self.assertEqual('[]', file.read())
         with open("Square.json", "r") as f:
             self.assertEqual('[]', f.read())
+
+    def test_one_save_to_file(self):
+        """Tests when Square.save_to_file([Square(1)])"""
+        sq1 = Square(1)
+        sq2 = Square(1, 1)
+        Square.save_to_file([sq1, sq2])
+        with open("Square.json", "r") as file:
+            self.assertEqual(
+                json.dumps([sq1.to_dictionary(), sq2.to_dictionary()]),
+                file.read())
 
     def test_from_json_string(self):
         """Tests list of json string representation"""
