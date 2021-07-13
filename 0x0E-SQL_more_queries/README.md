@@ -127,3 +127,250 @@ id  name
 1   Holberton
 guillaume@ubuntu:~/$
 ```
+
+* `5-unique_id.sql` - a script that creates the table unique_id on your MySQL server.unique_id description:id INT with the default value 1 and must be unique, name VARCHAR(256). The database name will be passed as an argument of the mysql command.If the table unique_id already exists, your script should not fail.
+```
+guillaume@ubuntu:~/$ cat 5-unique_id.sql | mysql -hlocalhost -uroot -p hbtn_0d_2
+Enter password: 
+guillaume@ubuntu:~/$ echo 'INSERT INTO unique_id (id, name) VALUES (89, "Holberton School");' | mysql -hlocalhost -uroot -p hbtn_0d_2
+Enter password: 
+guillaume@ubuntu:~/$ echo 'SELECT * FROM unique_id;' | mysql -hlocalhost -uroot -p hbtn_0d_2
+Enter password: 
+id  name
+89  Holberton School
+guillaume@ubuntu:~/$ echo 'INSERT INTO unique_id (id, name) VALUES (89, "Holberton");' | mysql -hlocalhost -uroot -p hbtn_0d_2
+Enter password: 
+ERROR 1062 (23000) at line 1: Duplicate entry '89' for key 'id'
+guillaume@ubuntu:~/$ echo 'SELECT * FROM unique_id;' | mysql -hlocalhost -uroot -p hbtn_0d_2
+Enter password: 
+id  name
+89  Holberton School
+guillaume@ubuntu:~/$
+```
+
+* `6-states.sql` - a script that creates the database hbtn_0d_usa and the table states (in the database hbtn_0d_usa) on your MySQL server.states description:id INT unique, auto generated, t be null and is a primary key, name VARCHAR(256) t be null. If the database hbtn_0d_usa already exists, your script should not fail. If the table states already exists, your script should not failcancan.
+```
+guillaume@ubuntu:~/$ cat 6-states.sql | mysql -hlocalhost -uroot -p
+Enter password: 
+guillaume@ubuntu:~/$ echo 'INSERT INTO states (name) VALUES ("California"), ("Arizona"), ("Texas");' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+guillaume@ubuntu:~/$ echo 'SELECT * FROM states;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  name
+1   California
+2   Arizona
+3   Texas
+guillaume@ubuntu:~/$ 
+```
+
+* `7-cities.sql` - a script that creates the database hbtn_0d_usa and the table cities (in the database hbtn_0d_usa) on your MySQL server.cities description:id INT unique, auto generated, t be null and is a primary key, state_id INT, t be null and must be a FOREIGN KEY that references to id of the states table, name VARCHAR(256) t be null. If the database hbtn_0d_usa already exists, your script should not fail. If the table cities already exists, your script should not failcancancan.
+```
+guillaume@ubuntu:~/$ cat 7-cities.sql | mysql -hlocalhost -uroot -p
+Enter password: 
+guillaume@ubuntu:~/$ echo 'INSERT INTO cities (state_id, name) VALUES (1, "San Francisco");' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+guillaume@ubuntu:~/$ echo 'SELECT * FROM cities;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  state_id    name
+1   1   San Francisco
+guillaume@ubuntu:~/$ echo 'INSERT INTO cities (state_id, name) VALUES (10, "Paris");' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+ERROR 1452 (23000) at line 1: Cannot add or update a child row: a foreign key constraint fails (`hbtn_0d_usa`.`cities`, CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`))
+guillaume@ubuntu:~/$ echo 'SELECT * FROM cities;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  state_id    name
+1   1   San Francisco
+guillaume@ubuntu:~/$ 
+```
+
+* `8-cities_of_california_subquery.sql`- a script that lists all the cities of California that can be found in the database hbtn_0d_usa.The states table contains only one record where name = California (but the id can be different, as per the example). Results must be sorted in ascending order by cities.id. You are not allowed to use the JOIN keyword. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ echo 'SELECT * FROM states;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  name
+1   California
+2   Arizona
+3   Texas
+4   Utah
+guillaume@ubuntu:~/$ echo 'SELECT * FROM cities;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  state_id    name
+1   1   San Francisco
+2   1   San Jose
+4   2   Page
+6   3   Paris
+7   3   Houston
+8   3   Dallas
+guillaume@ubuntu:~/$ cat 8-cities_of_california_subquery.sql | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  name
+1   San Francisco
+2   San Jose
+guillaume@ubuntu:~/$ 
+```
+
+* `9-cities_by_state_join.sql` - a script that lists all cities contained in the database hbtn_0d_usa.Each record should display: cities.id - cities.name - states.name. Results must be sorted in ascending order by cities.id. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ echo 'SELECT * FROM states;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  name
+1   California
+2   Arizona
+3   Texas
+4   Utah
+guillaume@ubuntu:~/$ echo 'SELECT * FROM cities;' | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  state_id    name
+1   1   San Francisco
+2   1   San Jose
+4   2   Page
+6   3   Paris
+7   3   Houston
+8   3   Dallas
+guillaume@ubuntu:~/$ cat 9-cities_by_state_join.sql | mysql -hlocalhost -uroot -p hbtn_0d_usa
+Enter password: 
+id  name    name
+1   San Francisco   California
+2   San Jose    California
+4   Page    Arizona
+6   Paris   Texas
+7   Houston Texas
+8   Dallas  Texas
+guillaume@ubuntu:~/$ 
+```
+
+* `10-genre_id_by_show.sql` - Import the database dump from hbtn_0d_tvshows to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql). a script that lists all shows contained in hbtn_0d_tvshows that have at least one genre linked. Each record should display: tv_shows.title - tv_show_genres.genre_id. Results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 10-genre_id_by_show.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+title   genre_id
+Breaking Bad    1
+Breaking Bad    6
+Breaking Bad    7
+Breaking Bad    8
+Dexter  1
+Dexter  2
+Dexter  6
+Dexter  7
+Dexter  8
+Game of Thrones 1
+Game of Thrones 3
+Game of Thrones 4
+House   1
+House   2
+New Girl    5
+Silicon Valley  5
+The Big Bang Theory 5
+The Last Man on Earth   1
+The Last Man on Earth   5
+guillaume@ubuntu:~/$ 
+```
+
+* `11-genre_id_all_shows.sql` - a script that lists all shows contained in the database hbtn_0d_tvshows. Each record should display: tv_shows.title - tv_show_genres.genre_id.Results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id. If a show doesn't have a genre, display NULL. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 11-genre_id_all_shows.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+title   genre_id
+Better Call Saul    NULL
+Breaking Bad    1
+Breaking Bad    6
+Breaking Bad    7
+Breaking Bad    8
+Dexter  1
+Dexter  2
+Dexter  6
+Dexter  7
+Dexter  8
+Game of Thrones 1
+Game of Thrones 3
+Game of Thrones 4
+Homeland    NULL
+House   1
+House   2
+New Girl    5
+Silicon Valley  5
+The Big Bang Theory 5
+The Last Man on Earth   1
+The Last Man on Earth   5
+guillaume@ubuntu:~/$ 
+```
+
+* `12-no_genre.sql` - a script that lists all shows contained in hbtn_0d_tvshows without a genre linked.Each record should display: tv_shows.title - tv_show_genres.genre_id. Results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 12-no_genre.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+title   genre_id
+Better Call Saul    NULL
+Homeland    NULL
+guillaume@ubuntu:~/$ 
+```
+
+* `13-count_shows_by_genre.sql` - a script that lists all genres from hbtn_0d_tvshows and displays the number of shows linked to each.Each record should display: <TV Show genre> - <Number of shows linked to this genre>. First column must be called genre. Second column must be called number_of_shows. Don't display a genre that doesn't have any shows linked. Results must be sorted in descending order by the number of shows linked. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 13-count_shows_by_genre.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+genre   number_of_shows
+Drama   5
+Comedy  4
+Mystery 2
+Crime   2
+Suspense    2
+Thriller    2
+Adventure   1
+Fantasy 1
+guillaume@ubuntu:~/$ 
+```
+
+* `14-my_genres.sql` - a script that uses the hbtn_0d_tvshows database to lists all genres of the show Dexter. The tv_shows table contains only one record where title = Dexter (but the id can be different). Each record should display: tv_genres.name. Results must be sorted in ascending order by the genre name. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 14-my_genres.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+name
+Crime
+Drama
+Mystery
+Suspense
+Thriller
+guillaume@ubuntu:~/$ 
+```
+
+* `15-comedy_only.sql` - a script that lists all Comedy shows in the database hbtn_0d_tvshows. The tv_genres table contains only one record where name = Comedy (but the id can be different). Each record should display: tv_shows.title. Results must be sorted in ascending order by the show title. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 15-comedy_only.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+title
+New Girl
+Silicon Valley
+The Big Bang Theory
+The Last Man on Earth
+guillaume@ubuntu:~/$ 
+```
+
+* `16-shows_by_genre.sql` - a script that lists all shows, and all genres linked to that show, from the database hbtn_0d_tvshows.If a show doesn't have a genre, display NULL in the genre column Each record should display: tv_shows.title - tv_genres.name. Results must be sorted in ascending order by the show title and genre name. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 16-shows_by_genre.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+title   name
+Better Call Saul    NULL
+Breaking Bad    Crime
+Breaking Bad    Drama
+Breaking Bad    Suspense
+Breaking Bad    Thriller
+Dexter  Crime
+Dexter  Drama
+Dexter  Mystery
+Dexter  Suspense
+Dexter  Thriller
+Game of Thrones Adventure
+Game of Thrones Drama
+Game of Thrones Fantasy
+Homeland    NULL
+House   Drama
+House   Mystery
+New Girl    Comedy
+Silicon Valley  Comedy
+The Big Bang Theory Comedy
+The Last Man on Earth   Comedy
+The Last Man on Earth   Drama
+guillaume@ubuntu:~/$ 
+```
