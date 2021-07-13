@@ -374,3 +374,63 @@ The Last Man on Earth   Comedy
 The Last Man on Earth   Drama
 guillaume@ubuntu:~/$ 
 ```
+
+* `100-not_my_genres.sql` - a script that uses the hbtn_0d_tvshows database to list all genres not linked to the show Dexter. The tv_shows table contains only one record where title = Dexter (but the id can be different). Each record should display: tv_genres.name. Results must be sorted in ascending order by the genre name. You can use a maximum of two SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 100-not_my_genres.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+name
+Adventure
+Comedy
+Fantasy
+guillaume@ubuntu:~/$ 
+```
+
+* `101-not_a_comedy.sql` - a script that lists all shows without the genre Comedy in the database hbtn_0d_tvshows. The tv_genres table contains only one record where name = Comedy (but the id can be different). Each record should display: tv_shows.title. Results must be sorted in ascending order by the show title. You can use a maximum of two SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 101-not_a_comedy.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
+Enter password: 
+title
+Better Call Saul
+Breaking Bad
+Dexter
+Game of Thrones
+Homeland
+House
+guillaume@ubuntu:~/$ 
+```
+
+* `102-rating_shows.sql` - a script that lists all shows from hbtn_0d_tvshows_rate by their rating.Each record should display: tv_shows.title - ratings sum. Results must be sorted in descending order by the rating. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 102-rating_shows.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
+Enter password: 
+title   rating
+Better Call Saul    163
+Homeland    145
+Silicon Valley  82
+Game of Thrones 79
+Dexter  24
+House   21
+Breaking Bad    16
+The Last Man on Earth   10
+The Big Bang Theory 0
+New Girl    0
+guillaume@ubuntu:~/$
+```
+
+* `103-rating_genres.sql` - a script that lists all genres in the database hbtn_0d_tvshows_rate by their rating. Each record should display: tv_genres.name - rating sum. Results must be sorted in descending order by their rating. You can use only one SELECT statement. The database name will be passed as an argument of the mysql command.
+```
+guillaume@ubuntu:~/$ cat 103-rating_genres.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
+Enter password: 
+name    rating
+Drama   150
+Comedy  92
+Adventure   79
+Fantasy 79
+Mystery 45
+Crime   40
+Suspense    40
+Thriller    40
+guillaume@ubuntu:~/$ 
+```
+
