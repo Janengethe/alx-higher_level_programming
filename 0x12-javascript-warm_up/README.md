@@ -25,3 +25,6 @@ $ sudo apt-get install -y nodejs
 [Documentation](https://github.com/standard/semistandard)
 
 `$ sudo npm install semistandard --global`
+
+### Files Descriptions
+* `5-to_integer.js`- a script that prints My number: <first argument converted in integer> if the first argument can be converted to an integer. resource [source](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
