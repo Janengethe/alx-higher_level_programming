@@ -20,7 +20,7 @@
 * `4-rectangle.js` - Creates an instance method called `rotate()` that exchanges the `width` and the `height` of the rectangle, and `double()` that multiples the `width` and the `height` of the rectangle by 2
 * `5-square.js` - creates a class `Square` that defines a square and inherits from `Rectangle` of `4-rectangle.js`
 * `6-square.js` - creates a class `Square` that defines a square and inherits from `Square` of `5-square.js`
-* `7-occurrences.js` - 
-* `8-esrever.js` - 
+* `7-occurrences.js` - a function that returns the number of occurrences in a list
+* `8-esrever.js` - a function that returns the reversed version of a list. help [source](https://www.codegrepper.com/code-examples/javascript/nodejs+reverse+array)
 * `9-logme.js` - 
 * `10-converter.js` - 
