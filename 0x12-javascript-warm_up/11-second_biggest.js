@@ -1,7 +1,13 @@
 #!/usr/bin/node
 
-if (process.argv.length < 4) {
-  console.log(0);
-} else {
-  console.log(process.argv.splice(2, process.argv.length - 1).sort().reverse()[1]);
+const myArgs = process.argv.slice(2);
+function secondMax (arr) {
+  if (arr.length <= 1) {
+    return (0);
+  } else {
+    arr.sort((a, b) => a - b);
+    arr.pop();
+    return (arr.pop());
+  }
 }
+console.log(secondMax(myArgs));
