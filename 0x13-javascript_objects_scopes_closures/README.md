@@ -18,3 +18,9 @@
 * `2-rectangle.js` - If `w` or `h` is equal to 0 or not a positive integer, create an empty object
 * `3-rectangle.js` - Creates an instance method called `print()` that prints the rectangle using the character `X`
 * `4-rectangle.js` - Creates an instance method called `rotate()` that exchanges the `width` and the `height` of the rectangle, and `double()` that multiples the `width` and the `height` of the rectangle by 2
+* `5-square.js` - creates a class `Square` that defines a square and inherits from `Rectangle` of `4-rectangle.js`
+* `6-square.js` - creates a class `Square` that defines a square and inherits from `Square` of `5-square.js`
+* `7-occurrences.js` - 
+* `8-esrever.js` - 
+* `9-logme.js` - 
+* `10-converter.js` - 
