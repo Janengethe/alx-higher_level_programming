@@ -26,4 +26,4 @@
 * `10-converter.js` - a function that converts a number from base 10 to another base passed as argument.
 * `100-map.js` - a script that imports an array `list` from `100-data.js` and computes a new array. [Tips](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map?v=control)
 * `101-sorted.js` - a script that imports a dictionary of occurrences by user id `dict` from `101-data.js` and computes a dictionary of user ids by occurrence.
-* `102-concat.js` - a script that concats 2 files, `fileA` and `fileB` and saves the result in `fileC`
+* `102-concat.js` - a script that concats 2 files, `fileA` and `fileB` and saves the result in `fileC`. [Tips](https://www.programmersought.com/article/54605077814/)
