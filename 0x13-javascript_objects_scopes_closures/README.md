@@ -22,5 +22,6 @@
 * `6-square.js` - creates a class `Square` that defines a square and inherits from `Square` of `5-square.js`
 * `7-occurrences.js` - a function that returns the number of occurrences in a list
 * `8-esrever.js` - a function that returns the reversed version of a list. help [source](https://www.codegrepper.com/code-examples/javascript/nodejs+reverse+array)
-* `9-logme.js` - 
-* `10-converter.js` - 
+* `9-logme.js` - a function that prints the number of arguments already printed and the new argument value.
+* `10-converter.js` - a function that converts a number from base 10 to another base passed as argument.
+* `100-map.js` - a script that imports an array `list` from `100-data.js` and computes a new array. [Tips](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map?v=control)
