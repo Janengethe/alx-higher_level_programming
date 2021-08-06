@@ -84,3 +84,7 @@ $ python3
 moved in a future release.")                                                                                                                    
   cursor.execute(statement, parameters)  
 ```
+
+### Files Descriptions
+* `0-select_states.py` - a script that lists all `states` from the database `hbtn_0e_0_usa` sorted in ascending order by `states.id`
+* `1-filter_states.py` - a script that lists all `states` with a name starting with `N` (upper N) from the database `hbtn_0e_0_usa`. [Tip](https://opentextbc.ca/dbdesign01/chapter/chapter-sql-dml/)
