@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-Module 2-my_filter_states
+Module 3-my_safe_filter_states
 a script that takes in an argument
 and displays all values in the states
 table of hbtn_0e_0_usa where name matches the argument
+Safe from SQL injection
 """
 
 import MySQLdb
