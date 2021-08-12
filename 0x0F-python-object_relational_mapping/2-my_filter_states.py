@@ -20,5 +20,6 @@ if __name__ == "__main__":
     '{:s}' ORDER BY id ASC""".format(argv[4])
     cursor.execute(sqry)
     for data in cursor.fetchall():
-        print(data)
+        if data[1] == argv[4]:
+            print(data)
     db.close()
