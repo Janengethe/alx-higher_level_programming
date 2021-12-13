@@ -16,7 +16,7 @@
 * [Modern JS](https://github.com/mbeaudru/modern-js-cheatsheet)
 
 ### Requirements
-* All files interpreted on Ubuntu 14.04 LTS using `node` (version 10.14.x)
+* All files interpreted on Ubuntu 20.04 LTS using `node` (version 14.x)
 * Code is `semistandard` compliant (version 14.x.x). [Rules of Standard](https://standardjs.com/rules.html) + [semicolons on top](https://github.com/standard/semistandard). Also as reference: [AirBnB style](https://github.com/airbnb/javascript)
 
 
