@@ -38,6 +38,28 @@ Bye
 $
 ```
 
+#### Install MySQLdb module version 2.0.x
+```
+$ sudo apt-get install python3-dev
+$ sudo apt-get install libmysqlclient-dev
+$ sudo apt-get install zlib1g-dev
+$ sudo pip3 install mysqlclient
+...
+$ python3
+>>> import MySQLdb
+>>> MySQLdb.version_info 
+(2, 0, 3, 'final', 0)
+```
+
+#### Install SQLAlchemy module version 1.4.x
+```
+$ sudo pip3 install SQLAlchemy
+...
+$ python3
+>>> import sqlalchemy
+>>> sqlalchemy.__version__ 
+'1.4.22'
+```
 
 #### Use “container-on-demand” to run MySQL
 > In the container, credentials are `root/root`.
@@ -58,4 +80,18 @@ sys
 $
 ```
 
+
+### Resources
+* [Object-relational mappers](https://www.fullstackpython.com/object-relational-mappers-orms.html)
+* [mysqlclient/MySQLdb documentation](https://mysqlclient.readthedocs.io/)
+* [MySQLdb tutorial](https://www.tutorialspoint.com/python/python_database_access.htm)
+* [SQLAlchemy tutorial](https://docs.sqlalchemy.org/en/13/orm/tutorial.html)
+* [SQLAlchemy](https://docs.sqlalchemy.org/en/13/)
+* [mysqlclient/MySQLdb](https://github.com/PyMySQL/mysqlclient)
+* [Introduction to SQLAlchemy](https://www.youtube.com/watch?v=woKYyhLCcnU)
+* [Flask SQLAlchemy](https://www.youtube.com/playlist?list=PLXmMXHVSvS-BlLA5beNJojJLlpE0PJgCW)
+* [10 common stumbling blocks for SQLAlchemy newbies](http://alextechrants.blogspot.com/2013/11/10-common-stumbling-blocks-for.html)
+* [Python SQLAlchemy Cheatsheet](https://www.pythonsheets.com/notes/python-sqlalchemy.html)
+* [SQLAlchemy ORM Tutorial for Python Developers](https://auth0.com/blog/sqlalchemy-orm-tutorial-for-python-developers/)
+* [SQLAlchemy Tutorial](https://overiq.com/sqlalchemy-101/)
 
