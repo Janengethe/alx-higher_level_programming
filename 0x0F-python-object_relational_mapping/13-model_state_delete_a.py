@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
-a script that prints the State object with
-the name passed as argument from the database
-hbtn_0e_6_usa
+a script that deletes all State objects with
+a name containing the letter a from the
+database hbtn_0e_6_usa
 """
 
 from sys import argv
@@ -20,10 +20,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    insid = session.query(State).filter_by(name-argv[4]).first()
-    if instance1:
-        print("{:d}".format(instance1.id)
+    state = session.query(State).filter(State.name.like('%a%')).all()
+    for i in state:
+        session.delete(i)
 
-    else:
-        print("Not found")
+    session.commit()
     session.close()
