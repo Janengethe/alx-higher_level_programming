@@ -53,7 +53,7 @@ matrix = [[1, 2], [3, 4]]
 >>> print(matrix_divided(matrix, "8"))
 Traceback (most recent call last):
 ...
-TypeError: div must be a number
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 matrix = {"age": 15}
 >>> print(matrix_divided(matrix, "8"))
