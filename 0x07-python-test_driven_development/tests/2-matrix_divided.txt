@@ -50,7 +50,7 @@ Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 matrix = [[1, 2], [3, 4]]
->>> print(matrix_divided(matrix, "8"))
+>>> print(matrix_divided(matrix, "alx"))
 Traceback (most recent call last):
 ...
 TypeError: div must be a number
@@ -78,3 +78,9 @@ matrix = [[], [4, 5, 6]]
 Traceback (most recent call last):
 ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+matrix = [[], [4, 5, 6]]
+>>> print(matrix_divided(matrix))
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
